@@ -8,13 +8,10 @@
 }
 
 body {
-    background-image: url(/assets/gameboy1.jpg);
-    background-position: top center;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-color:  #6b9be3;
+    background: url(/assets/pokemons.jpg) center/cover no-repeat fixed;   
     text-align: center;
     min-height: 100vh;
+    
 }
 
 main {
@@ -27,6 +24,7 @@ main {
 .pokedex {
     width: 100%;
     max-width: 425px;
+    
 }
 
 .pokemon_imagem {
