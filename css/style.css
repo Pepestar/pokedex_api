@@ -9,6 +9,7 @@
 
 body {
     background: url(/imagens/WhatsApp\ Image\ 2022-10-14\ at\ 13.35.59.jpeg) center/cover no-repeat fixed;   
+    background: linear-gradient(#6ab7f5, #fff);
     text-align: center;
     min-height: 100vh;
     
