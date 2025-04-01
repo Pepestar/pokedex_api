@@ -19,31 +19,33 @@ const fetchPokemon = async (pokemon) => {
     }
 }
 
-const renderPokemon = async (pokemon) =>{
+const renderPokemon = async (pokemon) => {
     pokemonName.innerHTML = 'Loading ...'; 
     pokemonNumber.innerHTML = '';
     pokemonImagem.style.display = 'none';
     
     const data = await fetchPokemon(pokemon);
     
-    
-    if (data.id <= 649)  {
-    pokemonImagem.style.display = 'block';
-    pokemonName.innerHTML = data.name;
-    pokemonNumber.innerHTML = data.id;
-    pokemonImagem.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
-
-     searchPokemon = data.id;
-}   
-
-else  { 
-    pokemonName.innerHTML = 'Not found';    
-    pokemonImagem.style.display = 'none';
-    pokemonNumber.innerHTML = '';
+    if (data) {
+        pokemonImagem.style.display = 'block';
+        pokemonName.innerHTML = data.name;
+        pokemonNumber.innerHTML = data.id;
+        
+        // Check if it's a Pokémon from Gen V or earlier (ID <= 649)
+        if (data.id <= 649) {
+            pokemonImagem.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+        } else {
+            // For Gen VI and later, use the regular sprite
+            pokemonImagem.src = data.sprites.front_default;
+        }
+        
+        searchPokemon = data.id;
+    } else {
+        pokemonName.innerHTML = 'Not found';    
+        pokemonImagem.style.display = 'none';
+        pokemonNumber.innerHTML = '';
     }
-
 }
-
 
 
 form.addEventListener('submit', (event) => {
